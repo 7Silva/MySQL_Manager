@@ -10,11 +10,6 @@ class Router {
     this.router = express.Router();
 
     this.router
-      .get('/test', (req, res) => {
-        console.log(req.headers['user-agent']);
-        res.send('Oi');
-      })
-
       .get('/:database/select/:table', async (req, res) => {
         const params = req.params,
           db = this.resolveDatabase(params?.database, cache),

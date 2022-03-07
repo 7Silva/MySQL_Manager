@@ -41,7 +41,7 @@ class Server {
 
   start() {
     this.server.listen(this.port,
-      () => console.log('http://localhost:' + this.port));
+      () => console.log('http://localhost:' +this.port));
   }
 }
 
