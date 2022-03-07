@@ -120,7 +120,7 @@
         axios.post('http://localhost:3001/api/YourDatabase/delete', {
             table: "table",
             value: {
-                project: 'MySQL Manager"
+                project: 'MySQL Manager'
             }
         }, {  headers: { authorization: 'Secret Key' } })
         .then(console.log)

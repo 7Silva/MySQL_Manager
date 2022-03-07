@@ -17,6 +17,14 @@
     "message": "You must send the same amount of values and columns",
     "contact": "If you think this is an error, contact your Server Administrator."
   },
+  "1005": {
+    "code": 1005,
+    "message": "Table columns do not receive empty values."
+  },
+  "1006": {
+    "code": 1006,
+    "message": "You cannot submit more values ​​than your column allows."
+  },
 
   "2001": {
     "code": 2001,

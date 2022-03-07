@@ -37,10 +37,9 @@ class QueryManager {
       switch(error?.original?.code) {
         case 'ER_NO_SUCH_TABLE': return 'Error 1002'; break;
         
-        case 'ER_NO_DEFAULT_FOR_FIELD':
-        case 'ER_WRONG_VALUE_COUNT_ON_ROW':
-        case 'ER_DUP_ENTRY':
-          return 'Error 1003'; break;
+        case 'ER_NO_DEFAULT_FOR_FIELD': return 'Error 1005'; break;
+        case 'ER_WRONG_VALUE_COUNT_ON_ROW': return 'Error 1006'; break;
+        case 'ER_DUP_ENTRY': return 'Error 1003'; break;
           
         default: console.error(error); break;
       }
