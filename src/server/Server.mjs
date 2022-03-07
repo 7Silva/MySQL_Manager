@@ -14,14 +14,17 @@ class Server {
   constructor() {
     this.application = express();
     this.server = createServer(this.application);
-    
+
     this.port = process.env.PORT ?? 3000;
     this.security = new Security();
     this.cache = new Map();
-    
+
     this.application
       .use(logger('common'))
       .use(this.security.rateLimit())
+      .use((req, res, next) => {
+        this.security.average(req, res, next);
+      })
       .all('*', (req, res, next) => {
         let authorization = req.headers?.authorization;
         if (!authorization) return new ExpressError(req, res, 2001, 400);
@@ -31,14 +34,14 @@ class Server {
       .use(cors())
       .use(express.json())
       .use(express.urlencoded({ extended: true }))
-      
+
       .use('/api', new Router(this.cache))
       .get('/', (_, res) => res.sendStatus(200));
   }
-  
+
   start() {
     this.server.listen(this.port,
-      () => console.log('http://localhost:' +this.port));
+      () => console.log('http://localhost:' + this.port));
   }
 }
 

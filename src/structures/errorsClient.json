@@ -23,7 +23,7 @@
   },
   "1006": {
     "code": 1006,
-    "message": "You cannot submit more values ​​than your column allows."
+    "message": "You cannot submit more values than your column allows."
   },
 
   "2001": {
@@ -34,13 +34,22 @@
     "code": 2002,
     "message": "You do not have permission to access this area."
   },
+  "2003": {
+    "code": 2003,
+    "message": "Your country is blacklisted by this API.",
+    "contact": "If you think this is an error, contact your Server Administrator."
+  },
+  "2004": {
+    "code": 2004,
+    "message": "This server does not receive an unregistered user-agent.",
+    "contact": "If you think this is an error, contact your Server Administrator."
+  },
 
   "3001": {
     "code": 3001,
     "message": "Your request is not valid to enter this area.",
     "contact": "If you think this is an error, contact your Server Administrator."
   },
-
   "3002": {
     "code": 3002,
     "message": "You made too many requests, wait a while to be able to access this area again."
