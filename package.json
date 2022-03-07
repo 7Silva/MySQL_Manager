@@ -1,0 +1,24 @@
+{
+  "name": "mysql_manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node --experimental-json-modules --no-warnings .",
+    "dev": "nodemon --experimental-json-modules --no-warnings ."
+  },
+  "author": "Daniel T. Silva",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-rate-limit": "^6.3.0",
+    "geoip-lite": "^1.4.3",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.17.0"
+  }
+}

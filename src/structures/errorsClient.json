@@ -1,0 +1,45 @@
+{
+  "1001": {
+    "code": 1001,
+    "message": "This database was not found on our server."
+  },
+  "1002": {
+    "code": 1002,
+    "message": "This Table was not found in our database or the Table is not a string."
+  },
+  "1003": {
+    "code": 1003,
+    "message": "This table does not accept empty values.",
+    "contact": "If you think this is an error, contact your Server Administrator."
+  },
+  "1004": {
+    "code": 1004,
+    "message": "You must send the same amount of values and columns",
+    "contact": "If you think this is an error, contact your Server Administrator."
+  },
+
+  "2001": {
+    "code": 2001,
+    "message": "You need to authenticate to access this area."
+  },
+  "2002": {
+    "code": 2002,
+    "message": "You do not have permission to access this area."
+  },
+
+  "3001": {
+    "code": 3001,
+    "message": "Your request is not valid to enter this area.",
+    "contact": "If you think this is an error, contact your Server Administrator."
+  },
+
+  "3002": {
+    "code": 3002,
+    "message": "You made too many requests, wait a while to be able to access this area again."
+  },
+  "3003": {
+    "code": 3003,
+    "message": "Your region is blocked from accessing this area.",
+    "contact": "If you think this is an error, contact your Server Administrator."
+  }
+}

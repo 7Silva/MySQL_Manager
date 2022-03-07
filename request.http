@@ -1,0 +1,30 @@
+##### Fetch All #####
+GET http://localhost:3000/api/1/select/users HTTP/1.1
+Authorization: yourAuthorization
+
+##### Fetch One #####
+GET http://localhost:3000/api/1/select/users?id=1 HTTP/1.1
+Authorization: yourAuthorization
+
+##### Insert Values #####
+POST http://localhost:3000/api/1/insert/ HTTP/1.1
+Authorization: yourAuthorization
+Content-Type: application/json
+
+{
+    "table": "users",
+    "columns": ['fullName', 'email', 'password', 'avatar', 'job'],
+    "values": ['B', 'B', 'B', 'B', 'B']
+}
+
+#### Delete Value ####
+POST http://localhost:3000/api/1/delete/ HTTP/1.1
+Authorization: yourAuthorization
+Content-Type: application/json
+
+{
+    "table": "users",
+    "value": {
+        fullName: 'B'
+    }
+}
