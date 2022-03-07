@@ -36,8 +36,7 @@ class Security {
       case 'NL': return new ExpressError(req, res, 2003, 403); break;
       default: next(); break;
     }
-
-    if (userAgent.substr())
+    
     switch (userAgent) {
       case 'python':
         return 'Block';
@@ -50,11 +49,11 @@ class Security {
       serverCountry = location.lookup(process.env.SERVER)?.country,
       country = location.lookup(req.connection.remoteAddress)?.country;
 
-    if (country != serverCountry) return new ExpressError(req, res, 2003, 403)
-    else next();
+    if (country !== serverCountry) return new ExpressError(req, res, 2003, 403)
+    else return next();
 
-    if (userAgent != process.env.USERAGENT) return new ExpressError(req, res, 2004, 403);
-    else next();
+    if (userAgent !== process.env.USERAGENT) return new ExpressError(req, res, 2004, 403);
+    else return next();
   }
 
   rateLimit() {
