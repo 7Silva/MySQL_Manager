@@ -13,6 +13,7 @@
 
 - <strong>Security</strong>:
   - [x] Block User-Agent
+  - [x] Block Country
   - [x] Rate Limit
   - [x] Headers Authorization 
   - [ ] Block Ip Address <strong>(Coming soon)</strong>
