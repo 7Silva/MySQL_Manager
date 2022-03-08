@@ -10,21 +10,24 @@ import bcrypt from 'bcryptjs';
 import logger from 'morgan';
 import cors from 'cors';
 
+/**
+ * @description A class to manage the server.
+ */
 class Server {
   constructor() {
+    // Server creation:
     this.application = express();
     this.server = createServer(this.application);
-
+    
     this.port = process.env.PORT ?? 3000;
     this.security = new Security();
     this.cache = new Map();
-
+    
+    // Defined routes and middlewares
     this.application
-      .use(logger('common'))
+      .use(logger('dev'))
       .use(this.security.rateLimit())
-      .use((req, res, next) => {
-        this.security.average(req, res, next);
-      })
+      .use(this.security.average)
       .all('*', (req, res, next) => {
         let authorization = req.headers?.authorization;
         if (!authorization) return new ExpressError(req, res, 2001, 400);
