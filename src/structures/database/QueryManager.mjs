@@ -1,3 +1,11 @@
+/*!
+ * MySQL Manager
+ * Copyright(c) 2020-2022 Bucky
+ * Copyright(c) 2020-2022 Daniel T. Silva
+ * Copyright(c) 2021-2022 Darkcompanny
+ * Apache Licensed
+ */
+
 'use strict';
 
 import { QueryTypes } from 'sequelize';
@@ -24,7 +32,7 @@ class QueryManager {
     if (!tableName || typeof tableName !== 'string') return 'Error 1002';
     if ((!Array.isArray(columns) && !columns.length) || (!Array.isArray(values) && !values.length)) return 'Error 1003';
     if ((columns.length !== values.length) || (values.length !== columns.length)) return 'Error 1004';
-    
+
     try {
       await database.query(
         `INSERT INTO \`${tableName}\``+
@@ -53,7 +61,7 @@ class QueryManager {
     
     try {
       await database.query(`DELETE FROM \`${tableName}\` WHERE ${Object.entries(value ?? {})
-        .map(([key, value]) => `\`${tableName}\`.\`${key}\` = ${value}`)
+        .map(([key, value]) => `\`${tableName}\`.\`${key}\` = '${value}'`)
         .join('')}`);
         
       return 'Success';

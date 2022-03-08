@@ -13,18 +13,18 @@ Content-Type: application/json
 
 {
     "table": "users",
-    "columns": ['fullName', 'email', 'password', 'avatar', 'job'],
-    "values": ['B', 'B', 'B', 'B', 'B']
+    "columns": ["fullName", "email", "password"],
+    "values": ["Value", "Value", "Value"]
 }
 
 #### Delete Value ####
-POST http://localhost:3000/api/1/delete/ HTTP/1.1
+DELETE http://localhost:3000/api/1/delete/ HTTP/1.1
 Authorization: yourAuthorization
 Content-Type: application/json
 
 {
     "table": "users",
     "value": {
-        fullName: 'B'
+        "Colum": "Value"
     }
 }

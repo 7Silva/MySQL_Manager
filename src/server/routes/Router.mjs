@@ -1,3 +1,11 @@
+/*!
+ * MySQL Manager
+ * Copyright(c) 2020-2022 Bucky
+ * Copyright(c) 2020-2022 Daniel T. Silva
+ * Copyright(c) 2021-2022 Darkcompanny
+ * Apache Licensed
+ */
+
 'use strict';
 
 import ExpressError from '../../structures/functions/ExpressError.mjs';
@@ -5,11 +13,16 @@ import QueryManager from '../../structures/database/QueryManager.mjs';
 import Database from '../../structures/database/Sequelize.mjs';
 import express from 'express';
 
+/**
+ * @description A class to manage the routes.
+ */
 class Router {
   constructor(cache) {
+    // Creating express router.
     this.router = express.Router();
 
     this.router
+      // Creating Get request to pull values.
       .get('/:database/select/:table', async (req, res) => {
         const params = req.params,
           db = this.resolveDatabase(params?.database, cache),
@@ -28,6 +41,7 @@ class Router {
         };
       })
 
+      // Creating Post request to insert values.
       .post('/:database/insert/', async (req, res) => {
         let database = req.params?.database,
           body = req.body;
@@ -59,7 +73,8 @@ class Router {
         };
       })
 
-      .post('/:database/delete/', async (req, res) => {
+      // Creating Post request to delete values.
+      .delete('/:database/delete/', async (req, res) => {
         const database = req.params['database'],
           body = req.body;
 
