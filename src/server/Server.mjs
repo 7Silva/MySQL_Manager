@@ -15,6 +15,7 @@ import Router from './routes/Router.mjs';
 import { createServer } from 'node:http';
 import express from 'express';
 import bcrypt from 'bcryptjs';
+import helmet from 'helmet';
 import logger from 'morgan';
 import cors from 'cors';
 
@@ -34,20 +35,24 @@ class Server {
     // Defined routes and middlewares
     this.application
       .use(logger('dev'))
+      
+      .use(helmet())
       .use(this.security.rateLimit())
       .use(this.security.average)
-      .all('*', (req, res, next) => {
+      
+      .get('/', (_, res) => res.sendStatus(200))
+      .all('/*', (req, res, next) => {
         let authorization = req.headers?.authorization;
         if (!authorization) return new ExpressError(req, res, 2001, 400);
         if (!bcrypt.compareSync(authorization, process.env.AUTHORIZATION)) return new ExpressError(req, res, 2001, 403);
         return next();
       })
+      
       .use(cors())
       .use(express.json())
       .use(express.urlencoded({ extended: true }))
 
-      .use('/api', new Router(this.cache))
-      .get('/', (_, res) => res.sendStatus(200));
+      .use('/api', new Router(this.cache));
   }
 
   start() {

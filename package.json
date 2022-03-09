@@ -23,6 +23,7 @@
     "geoip-lite": "^1.4.3",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.17.0"
+    "sequelize": "^6.17.0",
+    "helmet": "5.0.2"
   }
 }
