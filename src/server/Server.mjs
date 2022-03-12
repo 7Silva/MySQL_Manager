@@ -2,7 +2,7 @@
  * MySQL Manager
  * Copyright(c) 2020-2022 Bucky
  * Copyright(c) 2020-2022 Daniel T. Silva
- * Copyright(c) 2021-2022 Darkcompanny
+ * Copyright(c) 2021-2022 Darkcompany
  * Apache Licensed
  */
 
@@ -37,6 +37,7 @@ class Server {
       .use(logger('dev'))
       
       .use(helmet())
+      .use(cors())
       .use(this.security.rateLimit())
       .use(this.security.average)
       
@@ -48,7 +49,6 @@ class Server {
         return next();
       })
       
-      .use(cors())
       .use(express.json())
       .use(express.urlencoded({ extended: true }))
 

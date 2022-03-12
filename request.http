@@ -19,7 +19,7 @@ Content-Type: application/json
 
 #### Delete Value ####
 DELETE http://localhost:3000/api/1/delete/ HTTP/1.1
-Authorization: yourAuthorization
+Authorization: silva
 Content-Type: application/json
 
 {
