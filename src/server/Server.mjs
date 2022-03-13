@@ -34,12 +34,14 @@ class Server {
     
     // Defined routes and middlewares
     this.application
-      .use(logger('dev'))
+      .use(express.json())
+      .use(express.urlencoded({ extended: true }))
+      .use(logger('common'))
       
-      .use(helmet())
-      .use(cors())
+      .use(helmet()).use(cors())
       .use(this.security.rateLimit())
       .use(this.security.average)
+      .use(this.sqlInjection())
       
       .get('/', (_, res) => res.sendStatus(200))
       .all('/*', (req, res, next) => {
@@ -49,12 +51,25 @@ class Server {
         return next();
       })
       
-      .use(express.json())
-      .use(express.urlencoded({ extended: true }))
-
       .use('/api', new Router(this.cache));
   }
-
+  
+  sqlInjection() {
+    let isSqlInjection = (str) => !!([
+        new RegExp('w*((%27)|(\'))((%6F)|o|(%4F))((%72)|r|(%52))', 'i'),
+        new RegExp('((%3D)|(=))[^\n]*((%27)|(\')|(--)|(%3B)|(;))', 'i'),
+        new RegExp('(%27)|(\')|(--)|(%23)|(#)', 'i'),
+        new RegExp('(%27)|(\')|(--)|(%22)|(\")', 'i'),
+        new RegExp('(%27)|(\')|(--)|(%60)|(\`)', 'i'),
+        new RegExp('((%27)|(\'))union', 'i')
+      ].map(i => i.test(str)).filter(Boolean).length);
+      
+    return ((req, res, next) => {
+      if (isSqlInjection(req.url)) return res.status(403).end();
+      return next();
+    });
+  }
+  
   start() {
     this.server.listen(this.port,
       () => console.log('http://localhost:' +this.port));
