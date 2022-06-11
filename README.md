@@ -1,8 +1,6 @@
 <h1>Mysql Manager</h1>
 <div>
     <a href=''><img src='https://img.shields.io/hexpm/l/plug' /></a>
-    <a href=''><img src='https://img.shields.io/github/last-commit/7Silva/MySQL_Manager' /></a>
-    <a href=''><img src='https://img.shields.io/github/repo-size/7Silva/MySQL_Manager' /></a>
 </div>
 
 <!-- Functions Div -->
